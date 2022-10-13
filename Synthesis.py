@@ -1,7 +1,8 @@
-# this is the main for this VSP
+# this is the main for Synthesis
 from ast import main
 import calendar
 from datetime import datetime, timedelta
+from email.policy import default
 from time import time
 
 #---Settings----------------------------------------------#
@@ -50,7 +51,16 @@ taskCategories = [{'Monday':    {{730,900}:    'morningPrep',\
                                 {}:     'bedTime',\
                                 {{000,730},{2200,2400}}:     'sleep'}}]
 
-
+#Default item properties
+defaultTitle = "Item" # + currentDatetime
+defaultDescription = ''
+defaultDeadline = datetime
+defaultTotalDuration = int
+defaultTags = ['','']
+defaultPrepTime = int
+defaultLocation = ''
+defaultStatus = ''
+default
 
 #---Variables---------------------------------------------#
 
@@ -62,7 +72,7 @@ taskCategories = [{'Monday':    {{730,900}:    'morningPrep',\
 
 
 
-class Inbox:    
+class InboxManager:    
 # The Inbox inteacts with the Inbox database
     
     def NewItem(title = str,\
@@ -77,56 +87,56 @@ class Inbox:
 
 
         # Set newValues to defaults or respective input argument
+        ##!!!## THIS IS NOT A LOOP TO LEAVE ROOM FOR CONTEXTUAL DEFAULTS ##!!!##
         
-        ##!!!## THIS SHOULD BE A LOOP ##!!!##
         
         ## if title argument was left blank, use the default
         if title == '':
-            newTitle = "Item" # + currentDatetime
+            newTitle = defaultTitle
         ## else (I.e. title argument was populated), use the argument value
         else:
             newTitle = title
            
         ## if description argument was left blank, use the default
         if description == '':
-            newDescription = ''
+            newDescription = defaultDescription
         ## else (I.e. description argument was populated), use the argument value
         else:
             newDescription = description
         
         ## if deadline argument was left blank, use the default
         if deadline == '':
-            newDeadline = ''
+            newDeadline = defaultDeadline
         else:
             newDeadline = deadline
         
         ## if totalDuration argument was left blank, use the default
         if totalDuration == '':
-            newTotalDuration = ''
+            newTotalDuration = defaultTotalDuration
         else:
             newDescription = totalDuration
         
         ## if tags argument was left blank, use the default
         if tags == '':
-            newTags = ''
+            newTags = defaultTags
         else:
             newTags = tags
             
         ## if prepTime argument was left blank, use the default
         if prepTime == '':
-            newPrepTime = ''
+            newPrepTime = defaultPrepTime
         else:
             newPrepTime = prepTime
             
         ## if location argument was left blank, use the default
         if location == '':
-            newLocation = ''
+            newLocation = defaultLocation
         else:
             newLocation = location
             
         ## if status argument was left blank, use the default
         if status == '':
-            newStatus = ''
+            newStatus = defaultStatus
         else:
             newStatus = status
             
@@ -142,6 +152,17 @@ class Inbox:
     
         # insert the new item there
         return
+    
+    def itemList():
+        
+        return
+    
+    def topNItems(n = int):
+        topN = []
+        
+        #get top N items
+        
+        return(topN)
 
 class Timeline:
     
@@ -172,6 +193,10 @@ class Timeline:
         
         #return list of gaps
         return(gaps)
+    
+    def Suggest():
+        suggestions = []
+        return(suggestions)
 
 
 
